@@ -18,6 +18,11 @@ Simple bash script that's create new gitlab or github project and clone created 
 
 Done.
 
+*Mac users if wnat to use VS Code as a editor, may have one more step to do 
+5. Install Code in PATH
+- Launch VS Code.
+- Open the Command Palette (⇧⌘P) and type 'shell command' to find the Shell Command: Install 'code' command in PATH command.
+
 # Usage
 
 To run script navigate to script directory and type if the project should be created on GitLab
