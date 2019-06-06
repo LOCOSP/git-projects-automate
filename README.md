@@ -1,6 +1,6 @@
-# bash-automate-gitlab-new-project
+# Automate Your workflow creating new project environment in seconds
 
-Simple bash script that's create new gitlab project  and clone created project to same named folder on local machine in seconds.
+Simple bash script that's create new gitlab or github project and clone created project to same named folder on local machine.
 
 # Installation
 
