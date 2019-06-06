@@ -6,7 +6,7 @@ Simple bash script that's create new gitlab or github project and clone created 
 
 1. Clone to directory of choice:
 
-        git clone https://gitlab.websafe.pl/bmilewski/bash-automate-gitlab-new-project.git
+        git clone https://github.com/LOCOSP/git-projetcs-automate.git
 
 2. Give permissions to ```automatelab``` and ```automatehub``` file 
 
