@@ -2,7 +2,7 @@
 CFG_GITLAB_SCHEME="https"
 
 # for example gitlab.mydomain.com
-CFG_GITLAB_DOMAIN="gitlab.websafemydomain.com"
+CFG_GITLAB_DOMAIN="gitlab.mydomain.com"
 
 # You can find it in GitLab > Profile > Settings
 CFG_GITLAB_TOKEN=""
