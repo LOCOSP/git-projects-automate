@@ -1,0 +1,23 @@
+# Gitlab URI scheme - https or http
+CFG_GITLAB_SCHEME="https"
+
+# for example gitlab.mydomain.com
+CFG_GITLAB_DOMAIN="gitlab.websafemydomain.com"
+
+# You can find it in GitLab > Profile > Settings
+CFG_GITLAB_TOKEN=""
+
+# Github access token
+CFG_GITHUB_TOKEN=""
+
+# Your gitlab username
+CFG_GITLAB_USER=""
+
+# Your gihub username *NOT LOGIN*
+CFG_GITHUB_USER=""
+
+# full path to directory where projects will be kept. When home directory use: $HOME/path/to/dir
+CFG_USER_PROJECT_DIR="$HOME/NetBeansProjects"
+
+# Leave it blanc to run Editor manually. if wanted enter for example "code" that will run Visual Studio Code automatically.
+CFG_EDITOR=""

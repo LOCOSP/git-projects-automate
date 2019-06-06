@@ -1,0 +1,31 @@
+#!/bin/bash
+PROJECT=${1}
+
+if [ -f "./automate.conf" ];
+then
+    source "./automate.conf"
+elif [ -f "$HOME/.automate" ];
+then
+    source "$HOME/.automate"
+else 
+    echo "Configuration file not exist. Check README.MD"
+    exit 1
+fi
+
+if echo ${PROJECT} | grep -q " ";
+then 
+    echo "Avoid spaces in projects names"
+    exit 1
+fi
+curl --header "PRIVATE-TOKEN: ${CFG_GITLAB_TOKEN}" -X POST "${CFG_GITLAB_SCHEME}://${CFG_GITLAB_DOMAIN}/api/v4/projects?name=${PROJECT}&initialize_with_readme=true"
+cd "${CFG_USER_PROJECT_DIR}"
+git clone ${CFG_GITLAB_SCHEME}://oauth2:${CFG_GITLAB_TOKEN}@${CFG_GITLAB_DOMAIN}/${CFG_GITLAB_USER}/${PROJECT}.git
+cd "${CFG_USER_PROJECT_DIR}/$PROJECT"
+
+if [ -z "${CFG_EDITOR}" ]
+then
+    printf "\n\n######### Well done! #########\n#### Run editor manually ####\n\n\n"
+else
+    printf "\n\n######### Well done! #########\n#### Running Your editor ####\n\n\n"
+    ${CFG_EDITOR} .
+fi

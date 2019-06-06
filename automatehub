@@ -1,0 +1,36 @@
+#!/bin/bash
+PROJECT=${1}
+
+if [ -f "./automate.conf" ];
+then
+    source "./automate.conf"
+elif [ -f "$HOME/.automate" ];
+then
+    source "$HOME/.automate"
+else 
+    echo "Configuration file not exist. Check README.MD"
+    exit 1
+fi
+
+if echo ${PROJECT} | grep -q " ";
+then 
+    echo "Avoid spaces in projects names"
+    exit 1
+fi
+
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d "{\"name\": \"${PROJECT}\"}" https://api.github.com/user/repos?access_token=${CFG_GITHUB_TOKEN}
+cd "${CFG_USER_PROJECT_DIR}"
+git clone https://github.com/${CFG_GITHUB_USER}/${PROJECT}.git
+cd "${CFG_USER_PROJECT_DIR}/$PROJECT"
+printf "## ${PROJECT} by ${CFG_GITHUB_USER}\n\n" >> README.md
+git add .
+git commit -a -m "Init"
+git push -u origin master
+
+if [ -z "${CFG_EDITOR}" ]
+then
+    printf "\n\n######### Well done! #########\n#### Run editor manually ####\n\n\n"
+else
+    printf "\n\n######### Well done! #########\n#### Running Your editor ####\n\n\n"
+    ${CFG_EDITOR} .
+fi
